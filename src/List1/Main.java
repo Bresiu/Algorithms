@@ -1,6 +1,6 @@
 package List1;
 
-import List1.sortingAlgorithms.HeapSort;
+import List1.sortingAlgorithms.MergeSort;
 import List1.tools.Element;
 import List1.tools.Statistics;
 import List1.tools.Util;
@@ -42,7 +42,8 @@ public class Main {
         System.out.println(Statistics.countNumberOfComparisons(list));
         System.out.println(Statistics.countNumberOfSwitches(list));
         */
-        List<Element> list = makeList.makePermutation(1000);
+        /*
+        List<Element> list = makeList.makePermutation(10);
         Util.toStringList(list);
         System.out.println();
         System.out.println(Statistics.numberOfInversionsB(list));
@@ -52,5 +53,13 @@ public class Main {
         Util.toStringList(list);
         System.out.println(Statistics.countNumberOfComparisons(list));
         System.out.println(Statistics.countNumberOfSwitches(list));
+        */
+        List<Element> list = makeList.makePermutation(1000);
+        Util.toStringList(list);
+        System.out.println();
+        System.out.println(Statistics.numberOfInversionsB(list));
+        System.out.println(Statistics.numberOfInversions(list));
+        System.out.println();
+        Util.toStringList(MergeSort.mergeSort(list));
     }
 }

@@ -17,6 +17,7 @@ public class makeList {
         }
         return shuffleList(list);
     }
+
     // create element
     public static Element makeElement(int i) {
         Element element = new Element();
@@ -26,6 +27,7 @@ public class makeList {
         element.setNumberOfInversion(0);
         return element;
     }
+
     // shuffle elements in list using Collections.swap
     public static List<Element> shuffleList(List<Element> a) {
         int n = a.size();
