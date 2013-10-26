@@ -19,10 +19,12 @@ public class InsertionSort {
                 Collections.swap(list, j, j - 1);
 
                 // Update number of sitches
+                /*
                 temp = list.get(j).getNumberOfInversion();
                 list.get(j).setNumberOfInversion(++temp);
                 temp = list.get(j - 1).getNumberOfInversion();
                 list.get(j - 1).setNumberOfInversion(++temp);
+                */
 
                 // Update Comparison when loop condition is true
                 temp = list.get(j).getNumberOfComparison();

@@ -7,7 +7,7 @@ public class Element {
     int value;
     int initialPosition;
     int numberOfComparison;
-    int numberOfInversion;
+    //int numberOfInversion;
 
     public int getValue() {
         return value;
@@ -25,6 +25,7 @@ public class Element {
         this.initialPosition = initialPosition;
     }
 
+
     public int getNumberOfComparison() {
         return numberOfComparison;
     }
@@ -32,7 +33,7 @@ public class Element {
     public void setNumberOfComparison(int numberOfComparison) {
         this.numberOfComparison = numberOfComparison;
     }
-
+    /*
     public int getNumberOfInversion() {
         return numberOfInversion;
     }
@@ -40,4 +41,5 @@ public class Element {
     public void setNumberOfInversion(int numberOfInversion) {
         this.numberOfInversion = numberOfInversion;
     }
+    */
 }

@@ -36,11 +36,14 @@ public class QuickSort {
                 j--;
             }
             if (i <= j) {
+
                 Collections.swap(list, i, j);
+                /*
                 temp = list.get(i).getNumberOfInversion();
                 list.get(i).setNumberOfInversion(++temp);
                 temp = list.get(j).getNumberOfInversion();
                 list.get(j).setNumberOfInversion(++temp);
+                */
                 i++;
                 j--;
             }

@@ -32,8 +32,16 @@ public class MergeSort {
 
     private static List<Element> merge(List<Element> left, List<Element> right) {
         List<Element> merged = new ArrayList<Element>();
+        int temp;
         while (left.size() > 0 || right.size() > 0) {
             if (left.size() > 0 && right.size() > 0) {
+
+                // Update Comparison when if condition is true
+                temp = left.get(0).getNumberOfComparison();
+                left.get(0).setNumberOfComparison(++temp);
+                temp = right.get(0).getNumberOfComparison();
+                left.get(0).setNumberOfComparison(++temp);
+
                 if (left.get(0).getValue() < right.get(0).getValue()) {
                     merged.add(left.get(0));
                     left.remove(0);

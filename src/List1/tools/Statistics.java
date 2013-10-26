@@ -6,8 +6,8 @@ import java.util.List;
  * Created by bresiu on 23.10.13.
  */
 public class Statistics {
-    //O = n^2
-    public static String numberOfInversions(List<Element> a) {
+
+    public static int numberOfInversions(List<Element> a) {
         int counter = 0;
 
         for (int i = 0; i < a.size() - 1; i++) {
@@ -17,10 +17,10 @@ public class Statistics {
                 }
             }
         }
-        return "Number of Inversions in init list: " + counter;
+        return counter;
     }
 
-    public static String numberOfInversionsB(List<Element> a) {
+    public static int numberOfInversionsB(List<Element> a) {
         int counter = 0;
 
         for (int i = 0; i < a.size() - 1; i++) {
@@ -29,19 +29,20 @@ public class Statistics {
             }
         }
 
-        return "Number of Inversions between adjacent elements: " + counter;
+        return counter;
     }
 
-    public static String countNumberOfComparisons(List<Element> a) {
+    public static int countNumberOfComparisons(List<Element> a) {
         int counter = 0;
 
         for (int i = 0; i < a.size(); i++) {
             counter += a.get(i).getNumberOfComparison();
         }
 
-        return "Number of Comparisons: " + counter / 2;
+        return counter / 2;
     }
 
+    /*
     public static String countNumberOfSwitches(List<Element> a) {
         int counter = 0;
 
@@ -51,4 +52,5 @@ public class Statistics {
 
         return "Number of Switches: " + counter / 2;
     }
+    */
 }

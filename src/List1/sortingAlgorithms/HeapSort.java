@@ -22,10 +22,12 @@ public class HeapSort {
             Collections.swap(a, 0, i);
 
             // Update number of sitches
+            /*
             temp = a.get(0).getNumberOfInversion();
             a.get(0).setNumberOfInversion(++temp);
             temp = a.get(i).getNumberOfInversion();
             a.get(i).setNumberOfInversion(++temp);
+            */
 
             n--;
             maxheap(a, 0);
@@ -72,11 +74,12 @@ public class HeapSort {
             Collections.swap(a, i, largest);
 
             // Update number of sitches
+            /*
             temp = a.get(i).getNumberOfInversion();
             a.get(i).setNumberOfInversion(++temp);
             temp = a.get(largest).getNumberOfInversion();
             a.get(largest).setNumberOfInversion(++temp);
-
+            */
             maxheap(a, largest);
         }
     }

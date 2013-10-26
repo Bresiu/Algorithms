@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Created by bresiu on 23.10.13.
  */
-public class makeList {
+public class MakeList {
     // make list of specific size with sorted elements, than shuffle it
     public static List<Element> makePermutation(int size) {
         List<Element> list = new ArrayList<Element>();
@@ -24,7 +24,7 @@ public class makeList {
         element.setValue(i);
         element.setInitialPosition(i);
         element.setNumberOfComparison(0);
-        element.setNumberOfInversion(0);
+        //element.setNumberOfInversion(0);
         return element;
     }
 
