@@ -15,21 +15,21 @@ public class QuickSort {
         int i = start;
         int j = end;
         int temp;
+        // select pivot
         int pivot = list.get((start + end) / 2).getValue();
         do {
             while (list.get(i).getValue() < pivot) {
                 temp = list.get(i).getNumberOfComparison();
                 list.get(i).setNumberOfComparison(++temp);
-
                 temp = list.get((start + end) / 2).getNumberOfComparison();
                 list.get((start + end) / 2).setNumberOfComparison(++temp);
 
                 i++;
             }
             while (pivot < list.get(j).getValue()) {
+
                 temp = list.get(i).getNumberOfComparison();
                 list.get(i).setNumberOfComparison(++temp);
-
                 temp = list.get((start + end) / 2).getNumberOfComparison();
                 list.get((start + end) / 2).setNumberOfComparison(++temp);
 

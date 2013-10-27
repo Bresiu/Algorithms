@@ -14,6 +14,7 @@ public class MergeSort {
             return list;
         }
 
+        // Make two arrays for range < pivot && range > pivot
         List<Element> left = new ArrayList<Element>();
         List<Element> right = new ArrayList<Element>();
         int middle = list.size() / 2;
@@ -25,6 +26,7 @@ public class MergeSort {
                 right.add(list.get(i));
             }
         }
+        // use recursion
         left = mergeSort(left);
         right = mergeSort(right);
         return merge(left, right);
