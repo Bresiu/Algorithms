@@ -1,6 +1,6 @@
 package List1;
 
-import List1.sortingAlgorithms.QuickSort;
+import List1.sortingAlgorithms.HeapSort;
 import List1.tools.Chart;
 import List1.tools.Element;
 import List1.tools.MakeList;
@@ -79,7 +79,7 @@ public class Main {
         }
         */
 
-        ///*
+        /*
         // QUICK SORT
         for (int i = 0; i < arr.length; i++) {
             XYSeries series = new XYSeries("Array length: " + arr[i]);
@@ -108,26 +108,34 @@ public class Main {
             }
             makeChart(series);
         }
-        //*/
+        */
 
-        /*
+        ///*
         // HEAP SORT
         for (int i = 0; i < arr.length; i++) {
+            XYSeries series = new XYSeries("Array length: " + arr[i]);
             for (int j = 0; j < 300; j++) {
                 List<Element> list = MakeList.makePermutation(10);
-                Util.toStringList(list);
-                System.out.println();
-                System.out.println(Statistics.numberOfInversionsB(list));
-                System.out.println(Statistics.numberOfInversions(list));
-                System.out.println();
+                //Util.toStringList(list);
+                //System.out.println();
+                //System.out.println(Statistics.numberOfInversionsB(list));
+                //System.out.println(Statistics.numberOfInversions(list));
+                //System.out.println();
+                // A
+                int x = Statistics.numberOfInversions(list);
+
+                // B
+                // int x = Statistics.numberOfInversionsB(list);
                 HeapSort.sort(list);
-                Util.toStringList(list);
-                System.out.println(Statistics.countNumberOfComparisons(list));
-                System.out.println(Statistics.countNumberOfSwitches(list));
-                HeapSort.sort(list);
+                int y = Statistics.countNumberOfComparisons(list);
+                series.add(x, y);
+                //Util.toStringList(list);
+                //System.out.println(Statistics.countNumberOfComparisons(list));
+                //System.out.println(Statistics.countNumberOfSwitches(list));
             }
+            makeChart(series);
         }
-        */
+        //*/
 
         /*
         System.out.println("END");
