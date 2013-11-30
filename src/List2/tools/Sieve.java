@@ -2,25 +2,22 @@ package List2.tools;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
- * Created by bresiu on 23.10.13.
+ * Created by bresiu on 29.11.13.
  */
-public class MakeList {
-    // make list of random values
-    public static List<Integer> makePermutation(int size) {
-        List<Integer> list = new ArrayList<Integer>();
-        for (int i = 0; i < size; i++) {
-            Random random = new Random();
-            list.add(random.nextInt(size));
-        }
-        return list;
+
+public class Sieve {
+
+
+    public static void main(String[] args) {
+        List<Integer> primes = runEratosthenesSieve(10000);
+        System.out.println(primes);
     }
 
-    public static List<Integer> runEratosthenesSieve() {
+
+    public static List<Integer> runEratosthenesSieve(int upperBound) {
         List<Integer> primes = new ArrayList<Integer>();
-        int upperBound = 10000;
         int upperBoundSquareRoot = (int) Math.sqrt(upperBound);
         boolean[] isComposite = new boolean[upperBound + 1];
         for (int m = 2; m <= upperBoundSquareRoot; m++) {
@@ -36,3 +33,4 @@ public class MakeList {
         return primes;
     }
 }
+
