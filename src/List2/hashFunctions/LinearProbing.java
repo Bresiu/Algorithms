@@ -4,9 +4,6 @@ import List2.Main;
 import List2.tools.HashEntry;
 import List2.tools.Stats;
 
-/**
- * Created by bresiu on 29.10.13.
- */
 public class LinearProbing {
     HashEntry[] table;
     // size

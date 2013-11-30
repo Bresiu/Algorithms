@@ -3,27 +3,23 @@ package List2;
 import List2.hashFunctions.DoubleHashing;
 import List2.hashFunctions.LinearProbing;
 import List2.hashFunctions.QuadraticProbing;
+import List2.tools.Export;
 import List2.tools.MakeList;
 import List2.tools.Stats;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by bresiu on 29.10.13.
- */
 public class Main {
-    final static int SIZE = 10000;
     public static List<Stats> statsLinear;
     public static List<Stats> statsQuadratic;
     public static List<Stats> statsDouble;
 
-    public static void main(String[] args) {
+    //////////////////////////////////////////////////////////////////////////
+    // LINEAR PROBING ////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
 
-        //////////////////////////////////////////////////////////////////////////
-        // LINEAR PROBING ////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////
-
+    public static void linearProbing() {
         System.out.println("START OF LINEAR PROBING");
 
         statsLinear = new ArrayList<Stats>();
@@ -42,12 +38,15 @@ public class Main {
                 // System.out.println();
             }
         }
+        Export.toFile(Export.toSting(statsLinear), "linear");
         System.out.println("END OF LINEAR PROBING");
+    }
 
-        //////////////////////////////////////////////////////////////////////////
-        // QUADRATIC PROBING /////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    // QUADRATIC PROBING /////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
 
+    public static void quadraticProbing() {
         System.out.println("START OF QUADRATIC PROBING");
 
         statsQuadratic = new ArrayList<Stats>();
@@ -66,23 +65,28 @@ public class Main {
                 // System.out.println();
             }
         }
+        Export.toFile(Export.toSting(statsQuadratic), "quadratic");
         System.out.println("END OF LINEAR PROBING");
+    }
 
-        //////////////////////////////////////////////////////////////////////////
-        // DOUBLE HASHING ////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    // DOUBLE HASHING ////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
 
+    public static void doubleHashing() {
         System.out.println("START OF DOUBLE HASHING");
 
         statsDouble = new ArrayList<Stats>();
 
-        for (int i = 100; i <= 10000; i += 100) {
+        List<Integer> sieve = MakeList.makeEratosthenesSieve();
+        // System.out.println(sieve);
+
+        for (Integer aSieve : sieve) {
             for (int j = 0; j < 50; j++) {
-                // TODO primes
-                List<Integer> list = MakeList.makePermutation(i);
+                List<Integer> list = MakeList.makePermutation(aSieve);
                 // System.out.println(list + "\n");
 
-                DoubleHashing doubleHashing = new DoubleHashing(i);
+                DoubleHashing doubleHashing = new DoubleHashing(aSieve);
 
                 for (int n = 0; n < list.size(); n++) {
                     doubleHashing.put(list.get(n), n);
@@ -91,6 +95,14 @@ public class Main {
                 // System.out.println();
             }
         }
+        Export.toFile(Export.toSting(statsDouble), "double");
+        System.out.println("END OF DOUBLE HASHING");
+    }
+
+    public static void main(String[] args) {
+        // linearProbing();
+        quadraticProbing();
+        doubleHashing();
     }
 }
 

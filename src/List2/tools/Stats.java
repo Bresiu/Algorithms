@@ -1,8 +1,5 @@
 package List2.tools;
 
-/**
- * Created by bresiu on 29.11.13.
- */
 public class Stats {
     private int m;
     private int n;
