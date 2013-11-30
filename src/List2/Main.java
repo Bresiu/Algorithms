@@ -100,7 +100,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // linearProbing();
+        linearProbing();
         quadraticProbing();
         doubleHashing();
     }
