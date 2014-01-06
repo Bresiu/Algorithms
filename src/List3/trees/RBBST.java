@@ -14,12 +14,34 @@ public class RBBST {
     private int min;
     // Najwiekszy element w drzewie
     private int max;
+    // Statystyki
+    public int comparisonsIns;
+    public int comparisonsDel;
+
 
     public RBBST() {
         this.root = new RBNode(RBBST.NilValue);
         this.size = 0;
         this.min = EmptyMinMaxValue;
         this.max = EmptyMinMaxValue;
+        this.comparisonsIns = 0;
+        this.comparisonsDel = 0;
+    }
+
+    public int getComparisonsIns() {
+        return comparisonsIns;
+    }
+
+    public void setComparisonsIns(int value) {
+        this.comparisonsIns = value;
+    }
+
+    public int getComparisonsDel() {
+        return comparisonsDel;
+    }
+
+    public void setComparisonsDel(int value) {
+        this.comparisonsDel = value;
     }
 
     // Zwraca roota
@@ -553,11 +575,14 @@ public class RBBST {
             if (isNil()) {
                 return null;
             } else if (getKey() == i) {
+                comparisonsDel++;
                 return this;
             } else {
                 if (i < getKey() && hasLeftChild()) {
+                    comparisonsDel++;
                     return getLeftChild().search(i);
                 } else if (hasRightChild()) {
+                    comparisonsDel++;
                     return getRightChild().search(i);
                 }
             }
@@ -573,6 +598,7 @@ public class RBBST {
         // Wstaw wezel ponizej
         public boolean insert(RBNode newNode) {
             if (newNode.getKey() < getKey()) {
+                comparisonsIns++;
                 if (hasLeftChild()) {
                     return getLeftChild().insert(newNode);
                 } else {
@@ -580,6 +606,7 @@ public class RBBST {
                     return true;
                 }
             } else if (newNode.getKey() > getKey()) {
+                comparisonsIns++;
                 if (hasRightChild()) {
                     return getRightChild().insert(newNode);
                 } else {
@@ -587,6 +614,7 @@ public class RBBST {
                     return true;
                 }
             } else { // Klucz aktualnie istnieje
+                comparisonsIns++;
                 return false;
             }
         }

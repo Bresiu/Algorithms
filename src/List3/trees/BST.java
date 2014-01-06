@@ -17,9 +17,31 @@ public class BST {
     // void makeEmpty( )        - usuwa wszystkie elementy
     // void printTree( )        - drukuje drzewo w posortowanej kolejności
 
+    // Statystyki
+    public int comparisonsIns;
+    public int comparisonsDel;
+
     // Konstruktor
     public BST() {
         root = null;
+        this.comparisonsIns = 0;
+        this.comparisonsDel = 0;
+    }
+
+    public int getComparisonsIns() {
+        return comparisonsIns;
+    }
+
+    public void setComparisonsIns(int value) {
+        this.comparisonsIns = value;
+    }
+
+    public int getComparisonsDel() {
+        return comparisonsDel;
+    }
+
+    public void setComparisonsDel(int value) {
+        this.comparisonsDel = value;
     }
 
     // Wstaw element do drzewa
@@ -72,13 +94,17 @@ public class BST {
 
     // Wstawia element do poddrzewa
     private BinaryNode insert(Comparable x, BinaryNode t) {
-        if (t == null)
+        if (t == null) {
             t = new BinaryNode(x, null, null);
-        else if (x.compareTo(t.key) < 0)
+        } else if (x.compareTo(t.key) < 0) {
+            comparisonsIns++;
             t.left = insert(x, t.left);
-        else if (x.compareTo(t.key) > 0)
+        } else if (x.compareTo(t.key) > 0) {
+            comparisonsIns++;
             t.right = insert(x, t.right);
-        else ;  // Duplikat - nie rob nic
+        } else {
+            comparisonsIns++;
+        }  // Duplikat
         return t;
     }
 
@@ -86,11 +112,13 @@ public class BST {
     private BinaryNode remove(Comparable x, BinaryNode t) {
         if (t == null)
             return t;   // Nie znaleziono elementu - nie rob nic
-        if (x.compareTo(t.key) < 0)
+        if (x.compareTo(t.key) < 0) {
+            comparisonsDel++;
             t.left = remove(x, t.left);
-        else if (x.compareTo(t.key) > 0)
+        } else if (x.compareTo(t.key) > 0) {
+            comparisonsDel++;
             t.right = remove(x, t.right);
-        else if (t.left != null && t.right != null) // Dwoch synów
+        } else if (t.left != null && t.right != null) // Dwoch synów
         {
             t.key = findMin(t.right).key;
             t.right = remove(t.key, t.right);

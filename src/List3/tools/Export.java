@@ -10,12 +10,12 @@ import java.util.List;
  */
 public class Export {
 
-    public static String toSting(List<Stats> stats) {
+    public static String toString(List<Stats> stats) {
         String statsString = "";
         for (Stats i : stats) {
             statsString += i.getN() + " " + i.getT() + "\n";
         }
-        System.out.println(statsString);
+        //System.out.println(statsString);
         return statsString;
     }
 
