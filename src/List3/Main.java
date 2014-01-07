@@ -71,8 +71,8 @@ public class Main {
                 tree.insert(list.get(n));
                 if (n % 10 == 0) {
                     statsInsBST.add(new Stats(n, tree.getComparisonsIns()));
-                    tree.setComparisonsIns(0);
                 }
+                tree.setComparisonsIns(0);
             }
 
             //System.out.println(list.toString());
@@ -82,8 +82,8 @@ public class Main {
                 tree.remove(list.get(n));
                 if (n % 10 == 0) {
                     statsDelBST.add(new Stats(n, tree.getComparisonsDel()));
-                    tree.setComparisonsDel(0);
                 }
+                tree.setComparisonsDel(0);
             }
             //if (tree.isEmpty()) {
             //    System.out.println(i + ": is empty");
