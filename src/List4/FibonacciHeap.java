@@ -11,13 +11,10 @@ class FibonacciHeap {
 
     Entry minimum;
     int size;
-    ////////////////
-    int mod_count;
 
     FibonacciHeap() {
         minimum = null;
         size = 0;
-        mod_count = 0;
     }
 
     int getSize() {
@@ -47,9 +44,13 @@ class FibonacciHeap {
         } else {
 
             // Wstawianie w liste korzenia
+            // ++ ++ ++
             minimum.right.left = node;
+            // ++ ++
             node.right = minimum.right;
+            // ++ ++
             minimum.right = node;
+            // ++
             node.left = minimum;
 
             // nowe minimum
@@ -58,7 +59,6 @@ class FibonacciHeap {
             }
         }
         size++;
-        mod_count++;
 
         return node;
     }
@@ -100,7 +100,6 @@ class FibonacciHeap {
             consolidate();
         }
         size--;
-        mod_count++;
 
         // Zwraca stare minimum
         return z;
@@ -229,21 +228,27 @@ class FibonacciHeap {
 
     public static void main(String[] args) {
         Make make = new Make();
+
+        //int count;
+
         for (int i = 100; i <= 10000; i += 100) {
             for (int j = 0; j < 100; j++) {
+                //count = 0;
                 ArrayList<Integer> list = make.list(i);
                 int size = list.size();
                 FibonacciHeap heap = new FibonacciHeap();
                 for (int k = 0; k < size; k++) {
                     //System.out.println("key: " + k + " value: " + list.get(k));
+                    //count++;
                     heap.insert(k, list.get(k));
                     //System.out.println("Minimum: " + heap.getMinimum().getValue());
                 }
                 while (!heap.isEmpty()) {
+                    //count++;
                     //System.out.println("Minimum: " + heap.getMinimum().getValue());
                     heap.extractMinimum();
                 }
-
+                //System.out.println("COUNT = " + count);
             }
         }
         /**
