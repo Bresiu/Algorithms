@@ -34,8 +34,8 @@ public class Main {
                 tree.insert(list.get(n));
                 if (n % 10 == 0) {
                     statsInsRBBST.add(new Stats(n, tree.getComparisonsIns()));
-                    tree.setComparisonsIns(0);
                 }
+                tree.setComparisonsIns(0);
                 //System.out.println(tree.toString());
             }
             //System.out.println(list.toString());
@@ -45,8 +45,8 @@ public class Main {
                 tree.delete(list.get(n));
                 if (n % 10 == 0) {
                     statsDelRBBST.add(new Stats(n, tree.getComparisonsDel()));
-                    tree.setComparisonsDel(0);
                 }
+                tree.setComparisonsDel(0);
             }
             //System.out.println(tree.toString());
             //if (tree.empty()) {
