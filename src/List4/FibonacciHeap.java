@@ -15,7 +15,6 @@ class FibonacciHeap {
     int mod_count;
 
     FibonacciHeap() {
-        // Null min.
         minimum = null;
         size = 0;
         mod_count = 0;
@@ -71,7 +70,7 @@ class FibonacciHeap {
         Entry z = minimum;
 
         if (z.child != null) {
-            // Remove parent references for all of z's children.
+            // Usuwamy referencje do rodzicow wszystkich synow "z"
             w = z.child;
             t = w;
 
@@ -81,53 +80,47 @@ class FibonacciHeap {
             }
             while (t != w);
 
-            // Add the children to the root list.
+            // Dodajemy synow do roota
             minimum.left.right = w.right;
             w.right.left = minimum.left;
             minimum.left = w;
             w.right = minimum;
         }
 
-        // Remove z from the root list.
+        // Usuwamy "z" z roota
         z.left.right = z.right;
         z.right.left = z.left;
 
         if (z == z.right) {
-            // We hope the heap is now empty...
+            // kopiec jest pusty
             minimum = null;
         } else {
-            // We have some work to do.
+            // Wywolanie metody "consolidate()"
             minimum = z.right;
             consolidate();
         }
+        size--;
+        mod_count++;
 
-        // Dec size, inc mod.
-        size -= 1;
-        mod_count += 1;
-
-        // Return old minimum.
+        // Zwraca stare minimum
         return z;
     }
 
     void consolidate() {
-        // Create the auxiliary array.
+        // Tworzenie odpowiedniej wielkosci tablicy
         int dn = (int) Math.floor(Math.log(size) / Math.log(2)) + 2;
         Entry[] a = new Entry[dn];
 
-        // Iterating node - node at which to stop iterating...
+        // Wezel wspomagajacy iteracje
         Entry iter = minimum;
 
-        // The node we're on now; w from CLRS.
+        // Aktualny wezel
         Entry w = iter;
 
-        // x and y from CLRS code.
         Entry x;
         Entry y;
-
-        // temp ref.
         Entry temp;
 
-        // d from CLRS code.
         int d;
 
         do {
@@ -136,17 +129,16 @@ class FibonacciHeap {
 
             if (a[d] != x) {
                 while (a[d] != null) {
-                    // y has same degree as x... This much we know.
+                    // y ma taki sam stopien jak x
                     y = a[d];
 
                     if (x.getValue() > y.getValue()) {
-                        // Swap x and y.
+                        // Swap x i y.
                         temp = x;
                         x = y;
                         y = temp;
                     }
-
-                    // Make y a child of x.
+                    // Zrob z "y" syna "x-a"
                     link(y, x);
                     iter = x;
                     w = x;
@@ -157,23 +149,23 @@ class FibonacciHeap {
                 a[d] = x;
             }
 
-            // Next node.
+            // Nastepny wezel
             w = w.right;
         }
         while (w != iter);
 
-        // Reset... we need to iterate over the root list again.
+        // Reset. Iterowanie od poczatku listy
         minimum = iter;
         w = iter;
 
-        // Find the new minimum in the root list (if we don't already have it).
+        // Znajdz nowe minimum na liscie roota
         do {
             if (w.getValue() < minimum.getValue()) {
-                // Found a new minimum node.
+                // Znaleziono nowe minimum
                 minimum = w;
             }
 
-            // Next.
+            // Nastepny
             w = w.right;
         }
         while (w != iter);
@@ -242,12 +234,39 @@ class FibonacciHeap {
                 ArrayList<Integer> list = make.list(i);
                 int size = list.size();
                 FibonacciHeap heap = new FibonacciHeap();
-                for (int k = 0; k < size; k++)
-                    heap.insert(list.get(k), k);
-                while (!heap.isEmpty())
+                for (int k = 0; k < size; k++) {
+                    //System.out.println("key: " + k + " value: " + list.get(k));
+                    heap.insert(k, list.get(k));
+                    //System.out.println("Minimum: " + heap.getMinimum().getValue());
+                }
+                while (!heap.isEmpty()) {
+                    //System.out.println("Minimum: " + heap.getMinimum().getValue());
                     heap.extractMinimum();
+                }
+
             }
         }
+        /**
+         * Sprawdzenie poprawnosci z http://www.cse.yorku.ca/~aaw/Jason/FibonacciHeapAnimation.html
+         **/
+        /*
+        FibonacciHeap heap = new FibonacciHeap();
+        heap.insert(0, 0);
+        heap.insert(55, 55);
+        heap.insert(32, 32);
+        heap.insert(33, 33);
+        heap.insert(2, 2);
+        System.out.println("Minimum: " + heap.getMinimum().getValue());
+        heap.extractMinimum();
+        System.out.println("Minimum: " + heap.getMinimum().getValue());
+        System.out.println("next: " + heap.getMinimum().child.left.child.getValue());
+        heap.extractMinimum();
+        System.out.println("Minimum: " + heap.getMinimum().getValue());
+        System.out.println("next " + heap.getMinimum().right.getValue());
+        heap.extractMinimum();
+        System.out.println("Minimum: " + heap.getMinimum().getValue());
+        System.out.println("next " + heap.getMinimum().child.getValue());
+        */
         System.out.println("END");
     }
 }
