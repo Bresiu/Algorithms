@@ -29,6 +29,10 @@ class FibonacciHeap {
         return minimum;
     }
 
+    boolean isEmpty() {
+        return getMinimum() == null;
+    }
+
     Entry insert(int key, int value) {
         Entry node = new Entry(key, value);
 
@@ -200,7 +204,6 @@ class FibonacciHeap {
         y.marked = false;
     }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////
 // ENTRY ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -239,13 +242,12 @@ class FibonacciHeap {
                 ArrayList<Integer> list = make.list(i);
                 int size = list.size();
                 FibonacciHeap heap = new FibonacciHeap();
-                for (int k = 0; k < size; k++) {
+                for (int k = 0; k < size; k++)
                     heap.insert(list.get(k), k);
-                }
-                for (int k = 0; k < size; k++) {
+                while (!heap.isEmpty())
                     heap.extractMinimum();
-                }
             }
         }
+        System.out.println("END");
     }
 }
